@@ -1,13 +1,13 @@
 ###############################################################
 # Program:
-#     Week 02, STACK
+#     Week02, STACK
 #     Brother Jones, CS235
 # Author:
-#     Adam Shumway
+#     Adam Shumway, Josh Higgins, Dillon Christensen
 # Summary:
 #     Stack
 # Time:
-#     <how long did it take to complete this program>?
+#     10 hours
 ###############################################################
 ###############################################################
 # Makefile variables for windows, mac, or linux
