@@ -1,13 +1,13 @@
 ###############################################################
 # Program:
-#     Week02, STACK
-#     Brother Jones, CS235
+#     Week 03, QUEUE
+#     Brother Jones/Clemment, CS235
 # Author:
-#     Adam Shumway, Josh Higgins, Dillon Christensen
+#     Adam Shumway
 # Summary:
-#     Stack
+#     Queue
 # Time:
-#     10 hours
+#     <how long did it take to complete this program>?
 ###############################################################
 ###############################################################
 # Makefile variables for windows, mac, or linux
@@ -24,34 +24,42 @@ else
         RM = rm -f
         PROGRAM = a.out
         P_EXT = .out
-        TAR = tar -cf week02.tar *.h *.cpp makefile
+        TAR = tar -cf week03.tar *.h *.cpp makefile
     endif
     ifeq ($(shell uname),Darwin)
         #Mac stuff
         RM = rm -f
         PROGRAM = a.out
         P_EXT = .out
-        TAR = tar -cf week02.tar *.h *.cpp makefile
+        TAR = tar -cf week03.tar *.h *.cpp makefile
     endif
 endif
+
 
 ##############################################################
 # The main rule
 ##############################################################
-$(PROGRAM): week02.o infix.o
-	g++ -o $(PROGRAM) week02.o infix.o
+$(PROGRAM): queue.h week03.o dollars.o stock.o
+	g++ -o $(PROGRAM) week03.o dollars.o stock.o
 	$(TAR)
+
+dollarsTest: dollars.o dollarsTest.cpp
+	g++ -o dollarsTest dollars.o dollarsTest.cpp
 
 ##############################################################
 # The individual components
-#      week02.o       : the driver program
-#      infix.o        : the logic for the infix --> postfix program
+#      week03.o       : the driver program
+#      dollars.o      : the Dollars class
+#      stock.o        : the logic for the stock program
 ##############################################################
-week02.o: stack.h infix.h week02.cpp
-	g++ -c week02.cpp
+week03.o: queue.h week03.cpp
+	g++ -c week03.cpp
 
-infix.o: stack.h infix.h infix.cpp
-	g++ -c infix.cpp
+dollars.o: dollars.h dollars.cpp
+	g++ -c dollars.cpp
+
+stock.o: stock.h stock.cpp queue.h
+	g++ -c stock.cpp
 
 ###############################################################
 # General rules
