@@ -216,7 +216,6 @@ void Queue <T> :: allocate(int space) throw (const char *)
     // attempt to allocate
     try
     {
-       cerr << "we're in allocate\n";
         myArray = new T[space];
     }
     catch (std::bad_alloc)
@@ -230,10 +229,6 @@ T & Queue <T> :: accessArray(int index) throw (const char *)
 {
     if (!empty())
     {
-       cerr << "we're in accessArray and index value is: " << index << endl;
-       cerr << "Are we empty now? " << empty() << endl;
-       cerr << "myFront value is: " << myFront << " myBack value is: " << myBack
-         << " mySize value is: " << mySize << endl;
         return myArray[index];
     }
     else
