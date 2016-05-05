@@ -134,7 +134,9 @@ void testSimple()
 template <class T>
 ostream & operator << (ostream & out, Queue <T> q) 
 {
-   
+   cerr << "we're in the extraction operator\n";
+   cerr << "Are we empty (extraction)? " << q.empty() << endl;
+
    out << "{ ";
    while (!q.empty())
    {
@@ -157,6 +159,7 @@ void testPushPopTop()
 #ifdef TEST2
    try
    {
+      cerr << "starting Test2 and allocating queue\n";
       // create
       Queue <Dollars> q1;
       Dollars noMoney;
@@ -164,12 +167,19 @@ void testPushPopTop()
       // fill
       cout << "Enter money amounts, type $0 when done\n";
       Dollars money;
+
       do
       {
+         cerr << "we're in the push\n";
+         cerr << "(push) but are we empty? " << q1.empty() << endl;
          cout << "\t" << q1 << " > ";
          cin  >> money;
          if (money != noMoney)
+         {
             q1.push(money);
+            cerr << "Just dit the push (week03.cpp)\n";
+         }
+
       }
       while (money != noMoney);
 

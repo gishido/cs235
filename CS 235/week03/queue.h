@@ -16,7 +16,6 @@
 
 #include <cassert>
 #include <iostream>
-#include "dollars.h"
 
 using namespace std;
 
@@ -29,11 +28,15 @@ class Queue
 {
 public:
     // default constructor : empty and kinda useless
-    Queue() : mySize(0), myCapacity(0)
+    Queue() : mySize(0), myCapacity(0), myFront(0), myBack(0)
     {
        allocate(myCapacity);
+       cerr << "myFront value is: " << myFront << endl;
+       cerr << "myBack value is: " << myBack << endl;
+       cerr << "mySize value is: " << mySize << endl;
+       cerr << "we're empty? " << empty() << endl;
     }
-    
+
     // copy constructor : copy it
     Queue(const Queue & rhs) throw (const char *);
     
@@ -43,7 +46,7 @@ public:
     // destructor : free everything
     ~Queue()        { if (myCapacity) delete [] myArray; }
     // is the Queue currently empty
-    bool empty() const  { return mySize == 0;};
+    bool empty() const  { return (myFront == myBack);};
 
     // remove all the items from the Queue
     void clear()        { mySize = 0;                 }
@@ -72,6 +75,10 @@ public:
     //pop
     void pop() throw (const char *)
     {
+       cerr << "we're in POP\n";
+       cerr << "myFront value is: " << myFront << endl;
+       cerr << "myBack value is: " << myBack << endl;
+       cerr << "mySize value is: " << mySize << endl;
         if (!empty())
         {
             myFront = (myFront + 1) % myCapacity;
@@ -85,7 +92,7 @@ public:
 
     //top
     T & front() throw (const char *)	{return accessArray(myFront);};
-	T & back() throw (const char *)		{return accessArray((myBack - 1) % myCapacity);};
+    T & back() throw (const char *)		{return accessArray((myBack - 1) % myCapacity);};
 	
 private:
     T * myArray;              // dynamically allocated array of T
@@ -114,6 +121,7 @@ Queue <T> :: Queue(const Queue <T> & rhs) throw (const char *)
     {
         myCapacity = mySize = 0;
         myArray = NULL;
+        myFront = myBack = 0;
         return;
     }
     
@@ -124,10 +132,12 @@ Queue <T> :: Queue(const Queue <T> & rhs) throw (const char *)
     assert(rhs.mySize >= 0 && rhs.mySize <= rhs.myCapacity);
     this->myCapacity = rhs.myCapacity;
     mySize = rhs.mySize;
+    myFront = rhs.myFront;
+    myBack = rhs.myBack;
     
     // copy the items over one at a time using the assignment operator
     for (int i = 0; i < mySize; i++)
-        myArray[i] = rhs.myArray[(rhs.myFront + i) % rhs.myCapacity];
+        myArray[i] = rhs.myArray[i];
         
     // the rest needs to be filled with the default value for T
     for (int i = mySize; i < myCapacity; i++)
@@ -148,6 +158,7 @@ Queue <T> :: Queue(int pCapacity) throw (const char *)
     {
         this->myCapacity = this->mySize = 0;
         this->myArray = NULL;
+        this->myFront = this->myBack = 0;
         return;
     }
     
@@ -157,6 +168,9 @@ Queue <T> :: Queue(int pCapacity) throw (const char *)
     // copy over the stuff
     this->myCapacity = pCapacity;
     this->mySize = 0;
+
+    // set front and back of the queue
+    this->myFront = this->myBack = 0;
     
     // initialize the Queue by calling the default constructor
     for (int i = 0; i < pCapacity; i++)
@@ -166,13 +180,18 @@ Queue <T> :: Queue(int pCapacity) throw (const char *)
 template <class T>
 void Queue <T> :: push(const T & value) throw (const char *)
 {
+   int newBack;
+
     if (myCapacity == 0)
     {
-        myCapacity = 1;
+        cerr << "Capacity is ZERO\n";
+        myCapacity = 2;
         allocate(myCapacity);
+        newBack = (myBack + 1) % myCapacity;
     }
-    else if (myFront == myBack)
+    else if (newBack == myFront)
     {
+        cerr << "Capacity is greater than ZERO, but queue is FULL\n";
         myCapacity *= 2;
         // allocate double the memory below
         T * temp;
@@ -189,14 +208,20 @@ void Queue <T> :: push(const T & value) throw (const char *)
 
         for (int i = 0; i < mySize; i++)
         {
-            temp[i] = myArray[(myFront + i) % myCapacity];
+            temp[i] = myArray[i];
         }
         delete [] myArray;
         myArray = temp;
     }
+   cerr << "**BEFORE** my value is: " << value << endl;
+   cerr << "myFront value is: " << myFront << " myBack value is: " << myBack
+   << " newBack value is: " << newBack << " mySize value is: " << mySize << endl;
     myArray[myBack] = value;
-	myBack = (myBack + 1) % myCapacity;
+	 myBack = newBack;
     mySize++;
+   cerr << "**AFTER** my value is: " << value << endl;
+   cerr << "myFront value is: " << myFront << " myBack value is: " << myBack
+   << " newBack value is: " << newBack << " mySize value is: " << mySize << endl;
 }
 
 template <class T>
@@ -205,6 +230,7 @@ void Queue <T> :: allocate(int space) throw (const char *)
     // attempt to allocate
     try
     {
+       cerr << "we're in allocate\n";
         myArray = new T[space];
     }
     catch (std::bad_alloc)
@@ -218,6 +244,10 @@ T & Queue <T> :: accessArray(int index) throw (const char *)
 {
     if (!empty())
     {
+       cerr << "we're in accessArray and index value is: " << index << endl;
+       cerr << "Are we empty now? " << empty() << endl;
+       cerr << "myFront value is: " << myFront << " myBack value is: " << myBack
+         << " mySize value is: " << mySize << endl;
         return myArray[index];
     }
     else
