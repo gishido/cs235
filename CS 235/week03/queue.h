@@ -31,10 +31,6 @@ public:
     Queue() : mySize(0), myCapacity(0), myFront(0), myBack(0)
     {
        allocate(myCapacity);
-       cerr << "myFront value is: " << myFront << endl;
-       cerr << "myBack value is: " << myBack << endl;
-       cerr << "mySize value is: " << mySize << endl;
-       cerr << "we're empty? " << empty() << endl;
     }
 
     // copy constructor : copy it
@@ -75,10 +71,6 @@ public:
     //pop
     void pop() throw (const char *)
     {
-       cerr << "we're in POP\n";
-       cerr << "myFront value is: " << myFront << endl;
-       cerr << "myBack value is: " << myBack << endl;
-       cerr << "mySize value is: " << mySize << endl;
         if (!empty())
         {
             myFront = (myFront + 1) % myCapacity;
@@ -184,14 +176,12 @@ void Queue <T> :: push(const T & value) throw (const char *)
 
     if (myCapacity == 0)
     {
-        cerr << "Capacity is ZERO\n";
         myCapacity = 2;
         allocate(myCapacity);
         newBack = (myBack + 1) % myCapacity;
     }
     else if (newBack == myFront)
     {
-        cerr << "Capacity is greater than ZERO, but queue is FULL\n";
         myCapacity *= 2;
         // allocate double the memory below
         T * temp;
@@ -213,15 +203,11 @@ void Queue <T> :: push(const T & value) throw (const char *)
         delete [] myArray;
         myArray = temp;
     }
-   cerr << "**BEFORE** my value is: " << value << endl;
-   cerr << "myFront value is: " << myFront << " myBack value is: " << myBack
-   << " newBack value is: " << newBack << " mySize value is: " << mySize << endl;
+
     myArray[myBack] = value;
 	 myBack = newBack;
     mySize++;
-   cerr << "**AFTER** my value is: " << value << endl;
-   cerr << "myFront value is: " << myFront << " myBack value is: " << myBack
-   << " newBack value is: " << newBack << " mySize value is: " << mySize << endl;
+
 }
 
 template <class T>
