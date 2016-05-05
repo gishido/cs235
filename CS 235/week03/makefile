@@ -24,7 +24,7 @@ else
         RM = rm -f
         PROGRAM = a.out
         P_EXT = .out
-        TAR = tar -cf week02.tar *.h *.cpp makefile
+        TAR = tar -cf week03.tar *.h *.cpp makefile
     endif
     ifeq ($(shell uname),Darwin)
         #Mac stuff
