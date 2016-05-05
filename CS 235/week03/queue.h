@@ -45,7 +45,7 @@ public:
     bool empty() const  { return (myFront == myBack);};
 
     // remove all the items from the Queue
-    void clear()        { mySize = 0;                 }
+    void clear()        { while(!empty()) {pop();}                }
 
     // how many items are currently in the Queue?
     int size() const    { return mySize;              }
@@ -56,7 +56,7 @@ public:
     //Assignment Operator returns reference to a Queue
     Queue<T> & operator=(const Queue<T> & rhs)
     {
-        clear();
+        //clear();
         if (myCapacity < rhs.myCapacity)
         {
             allocate(rhs.myCapacity);
@@ -123,9 +123,9 @@ Queue <T> :: Queue(const Queue <T> & rhs) throw (const char *)
     // copy over the myCapacity and size
     assert(rhs.mySize >= 0 && rhs.mySize <= rhs.myCapacity);
     this->myCapacity = rhs.myCapacity;
-    mySize = rhs.mySize;
-    myFront = rhs.myFront;
-    myBack = rhs.myBack;
+    this->mySize = rhs.mySize;
+    this->myFront = rhs.myFront;
+    this->myBack = rhs.myBack;
     
     // copy the items over one at a time using the assignment operator
     for (int i = 0; i < mySize; i++)
@@ -180,7 +180,7 @@ void Queue <T> :: push(const T & value) throw (const char *)
         allocate(myCapacity);
         newBack = (myBack + 1) % myCapacity;
     }
-    else if (newBack == myFront)
+    else if (((myBack + 1) % myCapacity) == myFront)
     {
         myCapacity *= 2;
         // allocate double the memory below
@@ -205,7 +205,7 @@ void Queue <T> :: push(const T & value) throw (const char *)
     }
 
     myArray[myBack] = value;
-	 myBack = newBack;
+	 myBack = (myBack + 1) % myCapacity;
     mySize++;
 
 }
@@ -246,10 +246,14 @@ void Queue <T> :: copy(const Queue<T> & rhs)
 	
     // set myCapacity to passed in rhs capacity value
     myCapacity = rhs.myCapacity;
+
+    // set front and back of queue to equal the original
+    myFront = rhs.myFront;
+    myBack = rhs.myBack;
     
     // copy the items over one at a time using the assignment operator
     for (int i = 0; i < mySize; i++)
-        myArray[i] = rhs.myArray[(rhs.myFront + i) % rhs.myCapacity];
+        myArray[i] = rhs.myArray[i];
         
     // the rest needs to be filled with the default value for T
     for (int i = mySize; i < myCapacity; i++)
