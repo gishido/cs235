@@ -42,7 +42,7 @@ public:
     // destructor : free everything
     ~Queue()        { if (myCapacity) delete [] myArray; }
     // is the Queue currently empty
-    bool empty() const  { return (myFront == myBack);};
+    bool empty() const  { return (mySize == 0);}
 
     // remove all the items from the Queue
     void clear()        { while(!empty()) {pop();}                }
@@ -57,7 +57,7 @@ public:
     Queue<T> & operator=(const Queue<T> & rhs)
     {
         //clear();
-        if (myCapacity < rhs.myCapacity)
+        if (myCapacity != rhs.myCapacity)
         {
             allocate(rhs.myCapacity);
         }
@@ -127,8 +127,9 @@ Queue <T> :: Queue(const Queue <T> & rhs) throw (const char *)
     this->myFront = rhs.myFront;
     this->myBack = rhs.myBack;
     
+    //PLEASE FIX ME!!!
     // copy the items over one at a time using the assignment operator
-    for (int i = 0; i < mySize; i++)
+    for (int i = myFront; i != myBack; i = (i + 1) % myCapacity)
         myArray[i] = rhs.myArray[i];
         
     // the rest needs to be filled with the default value for T
@@ -180,7 +181,7 @@ void Queue <T> :: push(const T & value) throw (const char *)
         allocate(myCapacity);
         newBack = (myBack + 1) % myCapacity;
     }
-    else if (((myBack + 1) % myCapacity) == myFront)
+    else if (mySize >= myCapacity)
     {
         myCapacity *= 2;
         // allocate double the memory below
@@ -252,7 +253,7 @@ void Queue <T> :: copy(const Queue<T> & rhs)
     myBack = rhs.myBack;
     
     // copy the items over one at a time using the assignment operator
-    for (int i = 0; i < mySize; i++)
+    for (int i = myFront; i != myBack; i = (i + 1) % myCapacity)
         myArray[i] = rhs.myArray[i];
         
     // the rest needs to be filled with the default value for T
