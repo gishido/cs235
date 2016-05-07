@@ -12,9 +12,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="363492c8-3542-408e-9c24-b0f4754a6e9c" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/queue.h" afterPath="$PROJECT_DIR$/queue.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/week03.cpp" afterPath="$PROJECT_DIR$/week03.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/makefile" afterPath="$PROJECT_DIR$/makefile" />
     </list>
     <ignored path="week03.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -38,7 +36,7 @@
       <file leaf-file-name="CMakeLists.txt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
+            <state relative-caret-position="0">
               <caret line="6" column="38" selection-start-line="6" selection-start-column="38" selection-end-line="6" selection-end-column="38" />
               <folding />
             </state>
@@ -55,7 +53,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="makefile" pinned="false" current-in-tab="false">
+      <file leaf-file-name="makefile" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/makefile">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="612">
@@ -65,10 +63,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="queue.h" pinned="false" current-in-tab="true">
+      <file leaf-file-name="queue.h" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/queue.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="161">
+            <state relative-caret-position="-632">
               <caret line="234" column="14" selection-start-line="234" selection-start-column="14" selection-end-line="234" selection-end-column="14" />
               <folding>
                 <element signature="e#7943#7952#0" expanded="true" />
@@ -82,25 +80,31 @@
       <file leaf-file-name="week03.cpp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/week03.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2380">
-              <caret line="140" column="14" selection-start-line="141" selection-start-column="5" selection-end-line="141" selection-end-column="14" />
+            <state relative-caret-position="153">
+              <caret line="228" column="36" selection-start-line="228" selection-start-column="36" selection-end-line="228" selection-end-column="36" />
               <folding>
-                <marker date="1462632677317" expanded="true" signature="852:1129" placeholder="//..." />
-                <marker date="1462632677317" expanded="true" signature="1281:1496" placeholder="/**...*/" />
-                <marker date="1462632677317" expanded="true" signature="1508:2456" placeholder="{...}" />
-                <marker date="1462632677317" expanded="true" signature="2458:2614" placeholder="/**...*/" />
-                <marker date="1462632677317" expanded="true" signature="2633:4272" placeholder="{...}" />
-                <marker date="1462632677317" expanded="true" signature="4287:4423" placeholder="/**...*/" />
-                <marker date="1462632677317" expanded="false" signature="4424:4442" placeholder="&lt;T&gt;" />
-                <marker date="1462632677317" expanded="true" signature="4495:4624" placeholder="{...}" />
-                <marker date="1462632677317" expanded="true" signature="4642:4842" placeholder="/**...*/" />
-                <marker date="1462632677317" expanded="true" signature="4865:5922" placeholder="{...}" />
-                <marker date="1462632677317" expanded="true" signature="5924:6113" placeholder="/**...*/" />
-                <marker date="1462632677317" expanded="true" signature="6134:7722" placeholder="{...}" />
-                <marker date="1462632677317" expanded="true" signature="7724:7919" placeholder="/**...*/" />
-                <marker date="1462632677317" expanded="true" signature="7938:8914" placeholder="{...}" />
-                <marker date="1462632677317" expanded="false" signature="7956:8890" placeholder="..." />
+                <marker date="1462632677317" expanded="true" signature="7956:8890" placeholder="..." />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="stock.h" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/stock.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="stock.cpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/stock.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -125,9 +129,9 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/CMakeLists.txt" />
-        <option value="$PROJECT_DIR$/makefile" />
         <option value="$PROJECT_DIR$/week03.cpp" />
         <option value="$PROJECT_DIR$/queue.h" />
+        <option value="$PROJECT_DIR$/makefile" />
       </list>
     </option>
   </component>
@@ -231,9 +235,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24973656" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24973656" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="CMake" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -309,21 +313,7 @@
         <state relative-caret-position="2380">
           <caret line="140" column="14" selection-start-line="141" selection-start-column="5" selection-end-line="141" selection-end-column="14" />
           <folding>
-            <marker date="1462632677317" expanded="true" signature="852:1129" placeholder="//..." />
-            <marker date="1462632677317" expanded="true" signature="1281:1496" placeholder="/**...*/" />
-            <marker date="1462632677317" expanded="true" signature="1508:2456" placeholder="{...}" />
-            <marker date="1462632677317" expanded="true" signature="2458:2614" placeholder="/**...*/" />
-            <marker date="1462632677317" expanded="true" signature="2633:4272" placeholder="{...}" />
-            <marker date="1462632677317" expanded="true" signature="4287:4423" placeholder="/**...*/" />
-            <marker date="1462632677317" expanded="false" signature="4424:4442" placeholder="&lt;T&gt;" />
-            <marker date="1462632677317" expanded="true" signature="4495:4624" placeholder="{...}" />
-            <marker date="1462632677317" expanded="true" signature="4642:4842" placeholder="/**...*/" />
-            <marker date="1462632677317" expanded="true" signature="4865:5922" placeholder="{...}" />
-            <marker date="1462632677317" expanded="true" signature="5924:6113" placeholder="/**...*/" />
-            <marker date="1462632677317" expanded="true" signature="6134:7722" placeholder="{...}" />
-            <marker date="1462632677317" expanded="true" signature="7724:7919" placeholder="/**...*/" />
-            <marker date="1462632677317" expanded="true" signature="7938:8914" placeholder="{...}" />
-            <marker date="1462632677317" expanded="false" signature="7956:8890" placeholder="..." />
+            <marker date="1462632677317" expanded="true" signature="7956:8890" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -377,21 +367,7 @@
         <state relative-caret-position="2397">
           <caret line="141" column="14" selection-start-line="141" selection-start-column="5" selection-end-line="141" selection-end-column="14" />
           <folding>
-            <marker date="1462632677317" expanded="true" signature="852:1129" placeholder="//..." />
-            <marker date="1462632677317" expanded="true" signature="1281:1496" placeholder="/**...*/" />
-            <marker date="1462632677317" expanded="true" signature="1508:2456" placeholder="{...}" />
-            <marker date="1462632677317" expanded="true" signature="2458:2614" placeholder="/**...*/" />
-            <marker date="1462632677317" expanded="true" signature="2633:4272" placeholder="{...}" />
-            <marker date="1462632677317" expanded="true" signature="4287:4423" placeholder="/**...*/" />
-            <marker date="1462632677317" expanded="false" signature="4424:4442" placeholder="&lt;T&gt;" />
-            <marker date="1462632677317" expanded="true" signature="4495:4624" placeholder="{...}" />
-            <marker date="1462632677317" expanded="true" signature="4642:4842" placeholder="/**...*/" />
-            <marker date="1462632677317" expanded="true" signature="4865:5922" placeholder="{...}" />
-            <marker date="1462632677317" expanded="true" signature="5924:6113" placeholder="/**...*/" />
-            <marker date="1462632677317" expanded="true" signature="6134:7722" placeholder="{...}" />
-            <marker date="1462632677317" expanded="true" signature="7724:7919" placeholder="/**...*/" />
-            <marker date="1462632677317" expanded="true" signature="7938:8914" placeholder="{...}" />
-            <marker date="1462632677317" expanded="false" signature="7956:8890" placeholder="..." />
+            <marker date="1462632677317" expanded="true" signature="7956:8890" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -445,21 +421,7 @@
         <state relative-caret-position="2397">
           <caret line="141" column="14" selection-start-line="141" selection-start-column="5" selection-end-line="141" selection-end-column="14" />
           <folding>
-            <marker date="1462632677317" expanded="true" signature="852:1129" placeholder="//..." />
-            <marker date="1462632677317" expanded="true" signature="1281:1496" placeholder="/**...*/" />
-            <marker date="1462632677317" expanded="true" signature="1508:2456" placeholder="{...}" />
-            <marker date="1462632677317" expanded="true" signature="2458:2614" placeholder="/**...*/" />
-            <marker date="1462632677317" expanded="true" signature="2633:4272" placeholder="{...}" />
-            <marker date="1462632677317" expanded="true" signature="4287:4423" placeholder="/**...*/" />
-            <marker date="1462632677317" expanded="false" signature="4424:4442" placeholder="&lt;T&gt;" />
-            <marker date="1462632677317" expanded="true" signature="4495:4624" placeholder="{...}" />
-            <marker date="1462632677317" expanded="true" signature="4642:4842" placeholder="/**...*/" />
-            <marker date="1462632677317" expanded="true" signature="4865:5922" placeholder="{...}" />
-            <marker date="1462632677317" expanded="true" signature="5924:6113" placeholder="/**...*/" />
-            <marker date="1462632677317" expanded="true" signature="6134:7722" placeholder="{...}" />
-            <marker date="1462632677317" expanded="true" signature="7724:7919" placeholder="/**...*/" />
-            <marker date="1462632677317" expanded="true" signature="7938:8914" placeholder="{...}" />
-            <marker date="1462632677317" expanded="false" signature="7956:8890" placeholder="..." />
+            <marker date="1462632677317" expanded="true" signature="7956:8890" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -513,21 +475,7 @@
         <state relative-caret-position="544">
           <caret line="32" column="0" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
           <folding>
-            <marker date="1462632677317" expanded="true" signature="852:1129" placeholder="//..." />
-            <marker date="1462632677317" expanded="true" signature="1281:1496" placeholder="/**...*/" />
-            <marker date="1462632677317" expanded="true" signature="1508:2456" placeholder="{...}" />
-            <marker date="1462632677317" expanded="true" signature="2458:2614" placeholder="/**...*/" />
-            <marker date="1462632677317" expanded="true" signature="2633:4272" placeholder="{...}" />
-            <marker date="1462632677317" expanded="true" signature="4287:4423" placeholder="/**...*/" />
-            <marker date="1462632677317" expanded="false" signature="4424:4442" placeholder="&lt;T&gt;" />
-            <marker date="1462632677317" expanded="true" signature="4495:4624" placeholder="{...}" />
-            <marker date="1462632677317" expanded="true" signature="4642:4842" placeholder="/**...*/" />
-            <marker date="1462632677317" expanded="true" signature="4865:5922" placeholder="{...}" />
-            <marker date="1462632677317" expanded="true" signature="5924:6113" placeholder="/**...*/" />
-            <marker date="1462632677317" expanded="true" signature="6134:7722" placeholder="{...}" />
-            <marker date="1462632677317" expanded="true" signature="7724:7919" placeholder="/**...*/" />
-            <marker date="1462632677317" expanded="true" signature="7938:8914" placeholder="{...}" />
-            <marker date="1462632677317" expanded="false" signature="7956:8890" placeholder="..." />
+            <marker date="1462632677317" expanded="true" signature="7956:8890" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -542,16 +490,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="38" selection-start-line="6" selection-start-column="38" selection-end-line="6" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dollars.cpp">
-      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <caret line="6" column="38" selection-start-line="6" selection-start-column="38" selection-end-line="6" selection-end-column="38" />
           <folding />
         </state>
       </provider>
@@ -571,47 +511,65 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/makefile">
+    <entry file="file://$PROJECT_DIR$/dollars.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="612">
-          <caret line="36" column="0" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/week03.cpp">
+    <entry file="file://$PROJECT_DIR$/dollarsTest.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2380">
-          <caret line="140" column="14" selection-start-line="141" selection-start-column="5" selection-end-line="141" selection-end-column="14" />
-          <folding>
-            <marker date="1462632677317" expanded="true" signature="852:1129" placeholder="//..." />
-            <marker date="1462632677317" expanded="true" signature="1281:1496" placeholder="/**...*/" />
-            <marker date="1462632677317" expanded="true" signature="1508:2456" placeholder="{...}" />
-            <marker date="1462632677317" expanded="true" signature="2458:2614" placeholder="/**...*/" />
-            <marker date="1462632677317" expanded="true" signature="2633:4272" placeholder="{...}" />
-            <marker date="1462632677317" expanded="true" signature="4287:4423" placeholder="/**...*/" />
-            <marker date="1462632677317" expanded="false" signature="4424:4442" placeholder="&lt;T&gt;" />
-            <marker date="1462632677317" expanded="true" signature="4495:4624" placeholder="{...}" />
-            <marker date="1462632677317" expanded="true" signature="4642:4842" placeholder="/**...*/" />
-            <marker date="1462632677317" expanded="true" signature="4865:5922" placeholder="{...}" />
-            <marker date="1462632677317" expanded="true" signature="5924:6113" placeholder="/**...*/" />
-            <marker date="1462632677317" expanded="true" signature="6134:7722" placeholder="{...}" />
-            <marker date="1462632677317" expanded="true" signature="7724:7919" placeholder="/**...*/" />
-            <marker date="1462632677317" expanded="true" signature="7938:8914" placeholder="{...}" />
-            <marker date="1462632677317" expanded="false" signature="7956:8890" placeholder="..." />
-          </folding>
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/queue.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
+        <state relative-caret-position="-632">
           <caret line="234" column="14" selection-start-line="234" selection-start-column="14" selection-end-line="234" selection-end-column="14" />
           <folding>
             <element signature="e#7943#7952#0" expanded="true" />
             <element signature="e#8210#8219#0" expanded="true" />
             <element signature="e#8448#8457#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stock.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stock.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/week03.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="228" column="36" selection-start-line="228" selection-start-column="36" selection-end-line="228" selection-end-column="36" />
+          <folding>
+            <marker date="1462632677317" expanded="true" signature="7956:8890" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/makefile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="612">
+          <caret line="36" column="0" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
