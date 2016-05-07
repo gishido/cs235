@@ -79,13 +79,13 @@ public:
         }
         else
         {
-            throw "ERROR: Unable to pop from an empty Queue";
+            throw "ERROR: attempting to pop from an empty queue";
         }
     }
 
     //top
     T & front() throw (const char *)	{return accessArray(myFront);};
-    T & back() throw (const char *)		{return accessArray((myBack - 1) % myCapacity);};
+    T & back() throw (const char *)		{return accessArray(myBack);};
 	
 private:
     T * myArray;              // dynamically allocated array of T
@@ -258,7 +258,7 @@ void Queue <T> :: push(const T & value) throw (const char *)
     //cerr << "myFront | myBack | mySize | myCapacity: " << myFront << " | " << myBack
         //<< " | " << mySize << " | " << myCapacity << endl;
     myArray[myBack] = value;
-	 myBack = (myBack + 1) % myCapacity;
+	myBack = (myBack + 1) % myCapacity;
     mySize++;
 
     //cerr << "myFront | myBack | mySize | myCapacity: " << myFront << " | " << myBack
