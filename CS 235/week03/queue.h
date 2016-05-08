@@ -68,14 +68,14 @@ public:
 
     //push
     void push(const T & value) throw (const char *);
-    
+	
     //pop
     void pop() throw (const char *)
     {
         if (!empty())
         {
             myFront = (myFront + 1) % myCapacity;
-            mySize--;
+			mySize--;
         }
         else
         {
@@ -84,21 +84,21 @@ public:
     }
 
     //top
-    T & front() throw (const char *)    {return accessArray(myFront);};
-    T & back() throw (const char *)     {return accessArray(myBack);};
-    
+    T & front() throw (const char *)	{return accessArray(myFront);};
+    T & back() throw (const char *)		{return accessArray(myBack);};
+	
 private:
     T * myArray;              // dynamically allocated array of T
     int myFront;                // Front of the Queue
-    int myBack;                 // Back of the Queue
+	int myBack;					// Back of the Queue
     int myCapacity;           // capacity of Queue
-    int mySize;                 // Number of Items in queue
+	int mySize;					// Number of Items in queue
 
     void allocate(int Space) throw (const char *);
     
     void copy(const Queue<T> & rhs);
-    
-    T & accessArray(int index) throw (const char *);
+	
+	T & accessArray(int index) throw (const char *);
 };
 
 /*******************************************
@@ -258,7 +258,7 @@ void Queue <T> :: push(const T & value) throw (const char *)
     //cerr << "myFront | myBack | mySize | myCapacity: " << myFront << " | " << myBack
         //<< " | " << mySize << " | " << myCapacity << endl;
     myArray[myBack] = value;
-    myBack = (myBack + 1) % myCapacity;
+	myBack = (myBack + 1) % myCapacity;
     mySize++;
 
     //cerr << "myFront | myBack | mySize | myCapacity: " << myFront << " | " << myBack
