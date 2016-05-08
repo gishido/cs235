@@ -45,6 +45,7 @@ void stocksBuySell()
    
    while (input[0] != 'q')
    {
+   		cout << "> ";
 		cin >> input;
 		
 		if (input[0] == 'b' || input[0] == 's')

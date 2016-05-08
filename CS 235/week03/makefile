@@ -1,13 +1,13 @@
 ###############################################################
 # Program:
-#     Week03,QUEUE
+#     Week 03, QUEUE
 #     Brother Jones/Clemment, CS235
 # Author:
-#     Adam Shumway, Josh Higgins, Dillon Christenson
+#     Adam Shumway
 # Summary:
 #     Queue
 # Time:
-#     22 hours
+#     <how long did it take to complete this program>?
 ###############################################################
 ###############################################################
 # Makefile variables for windows, mac, or linux
@@ -34,7 +34,6 @@ else
         TAR = tar -cf week03.tar *.h *.cpp makefile
     endif
 endif
-
 
 ##############################################################
 # The main rule
