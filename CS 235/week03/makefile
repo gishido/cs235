@@ -7,7 +7,7 @@
 # Summary:
 #     Queue
 # Time:
-#     22 hours
+#     30 hours
 ###############################################################
 ###############################################################
 # Makefile variables for windows, mac, or linux
@@ -34,6 +34,7 @@ else
         TAR = tar -cf week03.tar *.h *.cpp makefile
     endif
 endif
+
 
 ##############################################################
 # The main rule

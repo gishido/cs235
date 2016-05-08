@@ -47,61 +47,63 @@ class Portfolio
    };
 
    //sell a stock
-   Dollars sell(int vol, Dollars pr)
+   Dollars sell(int volTotal, Dollars pr)
    {
       Dollars profit=0;
-      if(holdings.front().volume>vol)
+      int vol=volTotal;
+      //cerr << "Before sell loop" << endl;
+      while(vol!=0)
       {
-         int currVol=holdings.front().volume;
-         int newVol=currVol-vol;
-         holdings.front().volume=newVol;
-         profit=(pr-holdings.front().price)*vol;
-         Trans trans;
-         trans.volume=vol;
-         trans.price=pr;
-         trans.profit=(pr-holdings.front().price)*vol;
-         history.push(trans);
-         return profit;
-      }
-      else if(holdings.front().volume==vol)
-      {
-         profit=(pr-holdings.front().price)*vol;
-         holdings.pop();
-         Trans trans;
-         trans.volume=vol;
-         trans.price=pr;
-         trans.profit=(pr-holdings.front().price)*vol;
-         history.push(trans);
-         return profit;
-      }
-      else
-      {
-         while(vol>0)
+         if(holdings.front().volume>vol)
          {
-            if(holdings.front().volume>vol)
-            {
-               int currVol=holdings.front().volume;
-               int newVol=currVol-vol;
-               holdings.front().volume=newVol;
-               vol=0;
-               Trans trans;
-               trans.volume=vol;
-               trans.price=pr;
-               trans.profit=(pr-holdings.front().price)*vol;
-               history.push(trans);
-               profit=((pr-holdings.front().price)*currVol)+profit;
-            }
-            else
-            {
-               profit=((pr-holdings.front().price)*holdings.front().volume)+profit;
-               vol=-holdings.front().volume;
+            //cout<<"We are starting to subtract from last buy"<<endl;
+            int currVol=holdings.front().volume;
+            int newVol=currVol-vol;
+            holdings.front().volume=newVol;
+            profit=(pr-holdings.front().price)*vol;
+            Trans trans;
+            trans.profit=(pr-holdings.front().price)*vol;
+            trans.volume=vol;
+            trans.price=pr;
+            history.push(trans);
+            vol=0;
+            proceeds=proceeds+profit;
+         }
+         else if(holdings.front().volume==vol)
+         {
+            //cerr << "ELSE IF - SELL" << endl;
+//            cerr << holdings.front().volume << endl;
+            try {
+               profit=(pr-holdings.front().price)*vol;
                holdings.pop();
                Trans trans;
+               trans.profit=profit;
                trans.volume=vol;
                trans.price=pr;
-               trans.profit=(pr-holdings.front().price)*vol;
                history.push(trans);
+               proceeds=proceeds+profit;
+               vol=0;
             }
+            catch(string message)
+            {
+               cout<<message;
+            }
+         }
+         else
+         {
+            profit=((pr-holdings.front().price)*holdings.front().volume);
+           
+            int oldVol=holdings.front().volume;
+           
+            holdings.pop();
+            Trans trans;
+            trans.profit=profit;
+            trans.price=pr;
+            vol=vol-oldVol;
+            trans.volume=oldVol;
+            history.push(trans);
+            proceeds=proceeds+profit;
+            // cout<<"We made it to the end of the first buy"<<endl;
          }
       }
       return profit;
@@ -127,7 +129,8 @@ class Portfolio
    void display()
    {
       Queue<Trans> tmpHold=holdings;
-      cout<<"Currently held:"<<endl;
+      if(!holdings.empty())
+         cout<<"Currently held:"<<endl;
       while(!tmpHold.empty())
       {
          cout<<"\tBought "<<tmpHold.front().volume
@@ -135,10 +138,11 @@ class Portfolio
          tmpHold.pop();
       }
       Queue<Trans> tmpHist=history;
-      cout<<"Sell History:"<<endl;
+      if(!history.empty())
+         cout<<"Sell History:"<<endl;
       while(!tmpHist.empty())
       {
-         cout<<"\tSold"<<tmpHist.front().volume
+         cout<<"\tSold "<<tmpHist.front().volume
              <<" shares at "<<tmpHist.front().price
              <<" for a profit of "<<tmpHist.front().profit<<endl;
          tmpHist.pop();
