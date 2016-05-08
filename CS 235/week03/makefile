@@ -1,13 +1,13 @@
 ###############################################################
 # Program:
-#     Week 03, QUEUE
+#     Week03,QUEUE
 #     Brother Jones/Clemment, CS235
 # Author:
-#     Adam Shumway
+#     Adam Shumway, Josh Higgins, Dillon Christenson
 # Summary:
 #     Queue
 # Time:
-#     <how long did it take to complete this program>?
+#     22 hours
 ###############################################################
 ###############################################################
 # Makefile variables for windows, mac, or linux
