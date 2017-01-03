@@ -39,7 +39,7 @@ endif
 # The main rule
 ##############################################################
 $(PROGRAM): week02.o infix.o
-	g++ -o a.out week02.o infix.o 
+	g++ -o $(PROGRAM) week02.o infix.o 
 	$(TAR)
 
 ##############################################################
