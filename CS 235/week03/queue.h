@@ -42,7 +42,7 @@ public:
     // destructor : free everything
     ~Queue()        { if (myCapacity) delete [] myArray; }
     // is the Queue currently empty
-    bool empty() const  { return (myFront == myBack);};
+    bool empty() const  { return (mySize == 0);}
 
     // remove all the items from the Queue
     void clear()        { while(!empty()) {pop();}                }
@@ -56,8 +56,9 @@ public:
     //Assignment Operator returns reference to a Queue
     Queue<T> & operator=(const Queue<T> & rhs)
     {
+        //cerr << "entered operator=\n";
         //clear();
-        if (myCapacity < rhs.myCapacity)
+        if (myCapacity != rhs.myCapacity)
         {
             allocate(rhs.myCapacity);
         }
@@ -78,13 +79,13 @@ public:
         }
         else
         {
-            throw "ERROR: Unable to pop from an empty Queue";
+            throw "ERROR: attempting to pop from an empty queue";
         }
     }
 
     //top
     T & front() throw (const char *)	{return accessArray(myFront);};
-    T & back() throw (const char *)		{return accessArray((myBack - 1) % myCapacity);};
+    T & back() throw (const char *)		{return accessArray(myBack);};
 	
 private:
     T * myArray;              // dynamically allocated array of T
@@ -106,6 +107,8 @@ private:
 template <class T>
 Queue <T> :: Queue(const Queue <T> & rhs) throw (const char *)
 {
+    ////cerr << "Using default copy constructor\n";
+
     assert(rhs.myCapacity >= 0);
     
     // do nothing if there is nothing to do
@@ -126,14 +129,26 @@ Queue <T> :: Queue(const Queue <T> & rhs) throw (const char *)
     this->mySize = rhs.mySize;
     this->myFront = rhs.myFront;
     this->myBack = rhs.myBack;
-    
+
+    ////cerr << "myCapacity vs rhs.myCapacity and mySize and myFront " << myCapacity << " : " << rhs.myCapacity << " : " << mySize << " : " << myFront << endl;
+    int queueIndex = myFront;
     // copy the items over one at a time using the assignment operator
     for (int i = 0; i < mySize; i++)
-        myArray[i] = rhs.myArray[i];
-        
-    // the rest needs to be filled with the default value for T
-    for (int i = mySize; i < myCapacity; i++)
-        myArray[i] = T();
+    {
+        ////cerr << "i: " << i << endl;
+        myArray[queueIndex] = rhs.myArray[queueIndex];
+        queueIndex = (queueIndex + 1) % myCapacity;
+    }
+
+/*
+    if (mySize < myCapacity)
+    {
+        //cerr << "filling in empty spaces in the queue\n";
+        // the rest needs to be filled with the default value for T
+        for (int i = mySize; i < myCapacity; i++)
+            myArray[i] = T();
+    }
+*/
     }
 
 /**********************************************
@@ -180,15 +195,18 @@ void Queue <T> :: push(const T & value) throw (const char *)
         allocate(myCapacity);
         newBack = (myBack + 1) % myCapacity;
     }
-    else if (((myBack + 1) % myCapacity) == myFront)
+    else if (mySize >= myCapacity)
     {
+        //cerr << "We need to double our queue size\n";
+        int oldCapacity = myCapacity;
         myCapacity *= 2;
-        // allocate double the memory below
+         //allocate double the memory below
         T * temp;
 
         // try and catch to check for push error
         try
         {
+            //cerr << "push...new temp array\n";
             temp = new T [myCapacity];
         }
         catch(std::bad_alloc)
@@ -196,17 +214,55 @@ void Queue <T> :: push(const T & value) throw (const char *)
             throw "ERROR: Unable to allocate a new buffer for queue";
         }
 
+        int queueIndex = myFront;
+        // copy the items over one at a time using the assignment operator
         for (int i = 0; i < mySize; i++)
         {
+            //cerr << "copying array items " << i << " queueIndex: " << queueIndex << " myCapacity " << myCapacity << endl;
+            temp[i] = myArray[queueIndex];
+            queueIndex = (queueIndex + 1) % oldCapacity;
+            //cerr << "queueIndex: " << queueIndex << endl;
+        }
+
+        /*
+        for (int i = 0; i < mySize; i++)
+        {
+            //cerr << "copying array items " << i << " myCapacity " << myCapacity << endl;
             temp[i] = myArray[i];
         }
-        delete [] myArray;
-        myArray = temp;
-    }
+         */
+        //cerr << "**POST initial copy: myFront | myBack | mySize | myCapacity: " << myFront << " | " << myBack
+            //<< " | " << mySize << " | " << myCapacity << endl;
+        if(mySize < myCapacity)
+        {
+            //cerr << "mySize is smaller than myCapacity, so we're filling the rest of the queue with null\n";
+            // the rest needs to be filled with the default value for T
+            for (int i = mySize; i < myCapacity; i++)
+            {
+                //cerr << "copying nulls into extra capacity " << i << endl;
+                //myArray[i] = T();
+            }
 
+        }
+
+        //cerr << "ready to delete array\n";
+        delete [] myArray;
+        //cerr << "about to invoke operator=\n";
+        myArray = temp;
+        // reset myBack to correct place in the queue
+        myFront = 0;
+        myBack = mySize; // using  mySize since we know this place in the queue
+        //cerr << "new myBack size is: " << myBack << endl;
+     }
+
+    //cerr << "myFront | myBack | mySize | myCapacity: " << myFront << " | " << myBack
+        //<< " | " << mySize << " | " << myCapacity << endl;
     myArray[myBack] = value;
-	 myBack = (myBack + 1) % myCapacity;
+	myBack = (myBack + 1) % myCapacity;
     mySize++;
+
+    //cerr << "myFront | myBack | mySize | myCapacity: " << myFront << " | " << myBack
+    //<< " | " << mySize << " | " << myCapacity << endl;
 
 }
 
@@ -242,22 +298,36 @@ void Queue <T> :: copy(const Queue<T> & rhs)
 {
     // copy over the myCapacity and size
     assert(rhs.mySize >= 0 && rhs.mySize <= rhs.myCapacity);
+    //cerr << "mySize vs rhs.mySize: " << mySize << " : " << rhs.mySize << endl;
     mySize = rhs.mySize;
-	
+
+    //cerr << "myCapacity vs rhs.myCapacity: " << myCapacity << " : " << rhs.myCapacity << endl;
     // set myCapacity to passed in rhs capacity value
     myCapacity = rhs.myCapacity;
 
     // set front and back of queue to equal the original
     myFront = rhs.myFront;
     myBack = rhs.myBack;
-    
+
+    //cerr << "copy() method...about to copy the array\n";
+    // copy the items over one at a time using the assignment operator
+    //for (int i = 0; i < mySize; i++)
+     //   myArray[i] = rhs.myArray[i];
+
+    int queueIndex = myFront;
     // copy the items over one at a time using the assignment operator
     for (int i = 0; i < mySize; i++)
-        myArray[i] = rhs.myArray[i];
+    {
+        ////cerr << "i: " << i << endl;
+        myArray[queueIndex] = rhs.myArray[queueIndex];
+        queueIndex = (queueIndex + 1) % myCapacity;
+    }
         
     // the rest needs to be filled with the default value for T
-    for (int i = mySize; i < myCapacity; i++)
-        myArray[i] = T();
+    //for (int i = mySize; i < myCapacity; i++)
+     //  myArray[i] = T();
+
+    //cerr << "Leaving copy() method\n";
 }
 
 #endif // QUEUE_H
