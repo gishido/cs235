@@ -58,4 +58,4 @@ week01.o: vector.h week01.cpp
 # General rules
 ###############################################################
 clean :
-	$(RM) *$(P_EXT) *.o *.tar *~
+	$(RM) *$(P_EXT) *.o *.out *.tar *~
